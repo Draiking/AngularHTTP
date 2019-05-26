@@ -1,2 +1,10 @@
-
+<div class="container">
+  <button class="btn btn-primary">loader car</button>
+    <hr>
+    <ul class="list-group">
+        <li class="list-group-item" *ngFor="let car of cars">
+            <span class="badge">{{car.id}}</span>{{car.name}}  ({{car.color}})
+        </li>
+    </ul>
+</div>
 <router-outlet></router-outlet>
