@@ -1,5 +1,8 @@
 <div class="container">
+    <input type="text" class="form-control" [(ngModel)]="carName" >
+    <hr>
   <button class="btn btn-primary" (click)="loadCar()">loader car</button>
+  <button class="btn btn-success">add car</button>
     <hr>
     <ul class="list-group">
         <li class="list-group-item" *ngFor="let car of cars">
