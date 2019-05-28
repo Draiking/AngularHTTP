@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {CarsServices} from './cars.services';
+import {IData} from './db.module';
 
 
 
@@ -10,14 +11,21 @@ import {CarsServices} from './cars.services';
 })
 export class AppComponent implements OnInit {
 
-    cars = [];
+   cars: IData;
 
     constructor(private carService: CarsServices) {
 
     }
 
     ngOnInit() {
-        this.carService.getCars();
+    }
+
+    loadCar() {
+        this.carService
+            .getCars()
+            .subscribe((cars: IData) => {
+                this.cars = cars;
+            });
     }
 
 }
