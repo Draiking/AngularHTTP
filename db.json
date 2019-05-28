@@ -4,6 +4,21 @@
       "name": "Ford",
       "color": "white",
       "id": 1
+    },
+    {
+      "name": "audi",
+      "color": "blue",
+      "id": 3
+    },
+    {
+      "name": "BMW",
+      "color": "blue",
+      "id": 4
+    },
+    {
+      "name": "lada",
+      "color": "blue",
+      "id": 5
     }
   ]
 }

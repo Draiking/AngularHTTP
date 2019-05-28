@@ -12,6 +12,7 @@ import {IData} from './db.module';
 export class AppComponent implements OnInit {
 
    cars: IData;
+   carName: string = '';
 
     constructor(private carService: CarsServices) {
 
@@ -26,6 +27,13 @@ export class AppComponent implements OnInit {
             .subscribe((cars: IData) => {
                 this.cars = cars;
             });
+    }
+
+    addCar() {
+        this.carService.addCar(this.carName).subscribe((json) => {
+            this.cars.push(json);
+        });
+        this.carName = '';
     }
 
 }
