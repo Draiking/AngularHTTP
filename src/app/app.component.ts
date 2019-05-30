@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {CarsServices} from './cars.services';
 import {IData} from './db.module';
+import {resolve} from 'url';
 
 
 
@@ -22,14 +23,12 @@ export class AppComponent implements OnInit {
     }
 
     loadCar() {
-        this.carService
-            .getCars()
-            .subscribe((cars: IData) => {
+        this.carService.getCars().then((cars: IData) => {
                 this.cars = cars;
             });
     }
 
-    addCar() {
+   addCar() {
         this.carService.addCar(this.carName).subscribe((json) => {
             this.cars.push(json);
         });

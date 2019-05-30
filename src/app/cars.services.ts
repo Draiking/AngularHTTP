@@ -1,16 +1,23 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {IData} from './db.module';
+
+
 
 @Injectable()
 
 export class CarsServices {
 
+    myData: IData;
+
 
     constructor(private http: HttpClient) {
     }
 
-    getCars() {
-        return this.http.get('http://localhost:3000/cars');
+    async getCars(): Promise<IData> {
+        this.myData = await this.http.get<IData>('http://localhost:3000/cars').toPromise();
+        return this.myData;
+
     }
 
     addCar(carName: string) {
