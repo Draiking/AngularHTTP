@@ -1,0 +1,9 @@
+<ul class="list-group">
+  <li class="list-group-item" *ngFor="let car of carslist; let i = index">
+    <span class="badge" [ngStyle]="{background: car.color}">{{car.id}}</span>
+      {{car.name}}
+      <button class="btn btn-xs btn-primary" (click)="setNewColor(car)">color</button>
+      <span (click)="delete(i)">Удалить</span>
+      <span (click)="deleteByObject(car)">Удалить по объекту</span>
+  </li>
+</ul>

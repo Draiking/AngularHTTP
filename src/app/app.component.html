@@ -1,13 +1,11 @@
 <div class="container">
-    <input type="text" class="form-control" [(ngModel)]="carName" >
+    <input type="text" class="form-control" [(ngModel)]="carName">
     <hr>
-  <button class="btn btn-primary" (click)="loadCar()">loader car</button>
-  <button class="btn btn-success" (click)="addCar()">add car</button>
+    <app-buttonlist
+            (loadCarEvent)="loadCar($event)"
+            (addCarEvent)="addCar()"
+    ></app-buttonlist>
     <hr>
-    <ul class="list-group">
-        <li class="list-group-item" *ngFor="let car of cars">
-            <span class="badge">{{car.id}}</span>{{car.name}}  ({{car.color}})
-        </li>
-    </ul>
+    <app-carslist *ngIf="cars && cars.length" [carslist]="cars"></app-carslist>
 </div>
 <router-outlet></router-outlet>

@@ -1,31 +1,34 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {IData} from './db.module';
-
+import {IData} from './db.models';
+import {Observable, Subject} from 'rxjs';
 
 
 @Injectable()
 
 export class CarsServices {
 
-    myData: IData;
+    deleteEvent = new Subject<number>();
+    deleteByObject = new Subject<IData>();
 
 
     constructor(private http: HttpClient) {
     }
 
-    async getCars(): Promise<IData> {
-        this.myData = await this.http.get<IData>('http://localhost:3000/cars').toPromise();
-        return this.myData;
-
+    getCars(): Observable<IData[]> {
+        return this.http.get<any>('http://localhost:3000/cars');
     }
 
-    addCar(carName: string) {
+    async addCar(carName: string): Promise<any> {
         const data = {
             name: carName,
             color: 'blue'
         };
-        return this.http.post('http://localhost:3000/cars', data)
-            ;
+        return this.http.post('http://localhost:3000/cars', data).toPromise();
     }
+
+    changeColor(id: number, color: string) {
+        return this.http.put<any>(`http://localhost:3000/cars/${id}`, {color});
+    }
+
 }

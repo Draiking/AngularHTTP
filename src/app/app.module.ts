@@ -6,10 +6,14 @@ import {AppComponent} from './app.component';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
 import {CarsServices} from './cars.services';
+import { CarslistComponent } from './carslist/carslist.component';
+import { ButtonlistComponent } from './buttonlist/buttonlist.component';
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
+        CarslistComponent,
+        ButtonlistComponent
     ],
     imports: [
         BrowserModule,
